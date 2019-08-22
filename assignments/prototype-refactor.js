@@ -90,7 +90,7 @@ class Car {
     this.running = true;
   }
   drive(distance) {
-    if ((this.running === true)) {
+    if (this.running === true) {
       this.odometer = this.odometer + distance;
       return `total miles ${this.odometer}`;
     } else {
@@ -128,6 +128,12 @@ TASK 3
 //   return `I'm ${this.age} and playing with a knife`;
 // };
 
+class Baby extends Person {
+  play() {
+    return `I'm ${this.age} and playing with a knife`;
+  }
+}
+
 const newBaby = new Baby("Joe", 1);
 
 /*
@@ -158,6 +164,7 @@ Each constructor function has unique properties and methods that are defined in 
 * dimensions (These represent the character's size in the video game)
 * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
+
 function GameObject({ createdAt, name, dimensions }) {
   this.createdAt = createdAt;
   this.name = name;
