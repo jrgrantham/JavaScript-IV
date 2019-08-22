@@ -82,7 +82,30 @@ TASK 2
 //   return `I've been repaired`;
 // };
 
-
+class Car {
+  constructor(make, model) {
+    this.make = make;
+    this.model = model;
+    this.odometer = 0;
+    this.running = true;
+  }
+  drive(distance) {
+    if ((this.running === true)) {
+      this.odometer = this.odometer + distance;
+      return `total miles ${this.odometer}`;
+    } else {
+      return `I've been crashed, I've only been driven ${this.odometer} miles`;
+    }
+  }
+  crash() {
+    this.running = false;
+    return `I've been crashed and need repair`;
+  }
+  repair() {
+    this.running = true;
+    return `I've been repaired`;
+  }
+}
 
 const car = new Car("ford", "fiesta");
 
@@ -105,7 +128,7 @@ TASK 3
 //   return `I'm ${this.age} and playing with a knife`;
 // };
 
-// const newBaby = new Baby("Joe", 1);
+const newBaby = new Baby("Joe", 1);
 
 /*
 
