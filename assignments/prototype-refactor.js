@@ -8,21 +8,40 @@ Prototype Refactor
 
 */
 
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
-  this.stomach = [];
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+//   this.stomach = [];
+// }
+// Person.prototype.greet = function() {
+//   return `my name is ${this.name} and I am ${this.age}`;
+// };
+// Person.prototype.eat = function(food) {
+//   this.stomach.push(food);
+//   // return??
+// };
+// Person.prototype.poop = function() {
+//   this.stomach = [];
+// };
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  greet() {
+    return `my name is ${this.name} and I am ${this.age}`;
+  }
+  eat(food) {
+    this.stomach.push(food);
+    return `i've eaten all this: ${this.stomach}`;
+  }
+  poop() {
+    this.stomach = [];
+    return `i've pooped, my stomach is empty!`;
+  }
 }
-Person.prototype.greet = function() {
-  return `my name is ${this.name} and I am ${this.age}`;
-};
-Person.prototype.eat = function(food) {
-  this.stomach.push(food);
-  // return??
-};
-Person.prototype.poop = function() {
-  this.stomach = [];
-};
 
 const James = new Person("James", 40);
 
@@ -40,51 +59,53 @@ TASK 2
 
 */
 
-function Car(make, model) {
-  this.make = make;
-  this.model = model;
-  this.odometer = 0;
-  this.running = true;
-}
-Car.prototype.drive = function(distance) {
-  if (this.running === true) {
-    this.odometer = this.odometer + distance;
-    return `total miles ${this.odometer}`;
-  } else {
-    return `I've been crashed, I've only been driven ${this.odometer} miles`;
-  }
-};
-Car.prototype.crash = function() {
-  this.running = false;
-  return `I've been crashed, I've only been driven ${this.odometer} miles`;
-};
-Car.prototype.repair = function() {
-  this.running = true;
-  return `I've been repaired`;
-};
+// function Car(make, model) {
+//   this.make = make;
+//   this.model = model;
+//   this.odometer = 0;
+//   this.running = true;
+// }
+// Car.prototype.drive = function(distance) {
+//   if (this.running === true) {
+//     this.odometer = this.odometer + distance;
+//     return `total miles ${this.odometer}`;
+//   } else {
+//     return `I've been crashed, I've only been driven ${this.odometer} miles`;
+//   }
+// };
+// Car.prototype.crash = function() {
+//   this.running = false;
+//   return `I've been crashed, I've only been driven ${this.odometer} miles`;
+// };
+// Car.prototype.repair = function() {
+//   this.running = true;
+//   return `I've been repaired`;
+// };
+
+
 
 const car = new Car("ford", "fiesta");
 
 /*
-  
-    TASK 3
-  
-    - Build a Baby constructor that subclasses the Person built earlier.
-    - Babies of course inherit the ability to greet, which can be strange.
-    - Babies should have the ability to play, which persons don't.
-    - By playing, a string is returned with some text of your choosing.
-  
-  */
 
-function Baby(name, age) {
-  Person.call(this, name, age);
-}
-Baby.prototype = Object.create(Person.prototype);
-Baby.prototype.play = function() {
-  return `I'm ${this.age} and playing with a knife`;
-};
+TASK 3
 
-const newBaby = new Baby("Joe", 1);
+- Build a Baby constructor that subclasses the Person built earlier.
+- Babies of course inherit the ability to greet, which can be strange.
+- Babies should have the ability to play, which persons don't.
+- By playing, a string is returned with some text of your choosing.
+
+*/
+
+// function Baby(name, age) {
+//   Person.call(this, name, age);
+// }
+// Baby.prototype = Object.create(Person.prototype);
+// Baby.prototype.play = function() {
+//   return `I'm ${this.age} and playing with a knife`;
+// };
+
+// const newBaby = new Baby("Joe", 1);
 
 /*
 
@@ -215,13 +236,13 @@ const archer = new Humanoid({
   weapons: ["Bow", "Dagger"],
   language: "Elvish"
 });
-console.log(mage.createdAt); // Today's date
-console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-console.log(swordsman.healthPoints); // 15
-console.log(mage.name); // Bruce
-console.log(swordsman.team); // The Round Table
-console.log(mage.weapons); // Staff of Shamalama
-console.log(archer.language); // Elvish
-console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-console.log(mage.takeDamage()); // Bruce took damage.
-console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+// console.log(mage.createdAt); // Today's date
+// console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+// console.log(swordsman.healthPoints); // 15
+// console.log(mage.name); // Bruce
+// console.log(swordsman.team); // The Round Table
+// console.log(mage.weapons); // Staff of Shamalama
+// console.log(archer.language); // Elvish
+// console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+// console.log(mage.takeDamage()); // Bruce took damage.
+// console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
