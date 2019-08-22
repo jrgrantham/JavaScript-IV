@@ -7,6 +7,7 @@ class Person {
         this.location = location;
     }
     speak() {
+        console.log(`Hello my name is ${this.name}, I am from ${this.location}`)
         return `Hello my name is ${this.name}, I am from ${this.location}`;
     }
 }
@@ -19,28 +20,39 @@ class Instructor extends Person {
         this.catchphrase = catchphrase;
     }
     demo(subject) {
-        return `Today we are learning about ${subject}'.`
+        console.log(`Today we are learning about ${subject}'.`);
+        return `Today we are learning about ${subject}'.`;
     }
     grade(student, subject) {
-        return `${student.name} receives a perfect score on ${subject}`
+        console.log(`${student.name} receives a perfect score on ${subject}`);
+        return `${student.name} receives a perfect score on ${subject}`;
+    }
+    gradeStudent(student) {
+        return student.grade = Math.floor(Math.random() * 100)
     }
 }
 
 class Student extends Person {
-    constructor (name, age, location, previousBackground, className, favSubjects) {
+    constructor (name, age, location, previousBackground, className, favSubjects, grade) {
         super (name, age, location);
         this.previousBackground = previousBackground;
         this.className = className;
         this.favSubjects = favSubjects;
+        this.grade = grade;
     }
     listsSubjects() {
-        return this.favSubjects; // need listing one by one
+        this.favSubjects.forEach(function(subject) {
+            console.log(subject);
+        })
+        return this.favSubjects;
     }
     PRAssignments(subject) {
-        return `${this.name} has submitted a PR for ${subject}`
+        console.log(`${this.name} has submitted a PR for ${subject}`);
+        return `${this.name} has submitted a PR for ${subject}`;
     }
     sprintChallenge(subject) {
-        return `${this.name} has begun sprint challenge on ${subject}`
+        console.log(`${this.name} has begun sprint challenge on ${subject}`);
+        return `${this.name} has begun sprint challenge on ${subject}`;
     }
 }
 
@@ -51,6 +63,7 @@ class ProjectManager extends Instructor {
         this.favInstructor = favInstructor;
     }
     standUp(channel) {
+        console.log()
         return `${this.name} announces to ${channel}, @channel standy times!​​​​​`;
     }
     debugsCode(student, subject) {
@@ -58,9 +71,18 @@ class ProjectManager extends Instructor {
     }
 }
 
+
+
 let james = new Student ('James', 40, 'Aberdeen', 'Oil and Gas', 'WEBEU3', ['maths', 'physics', 'JS']);
 let isaac = new Instructor ('Isaac', 55, 'Ireland', 'cooking', 'JS!', 'one, two, TREE');
 let isaacsBoss = new ProjectManager ('Tony', 16, 'London', 'dancing', 'French', 'Whoop whoop', 'WEBEU3', 'Isaac');
 
-console.log(james.speak());
-console.log(james.favSubjects);
+james.speak();
+james.listsSubjects();
+james.PRAssignments('test1');
+james.sprintChallenge('test2');
+
+isaac.speak();
+isaac.demo('frying');
+isaac.grade(james, 'JS');
+
