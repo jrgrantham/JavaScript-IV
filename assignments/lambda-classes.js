@@ -11,7 +11,7 @@ class Person {
     }
 }
 
-class Instructors extends Person {
+class Instructor extends Person {
     constructor (name, age, location, speciality, favLanguage, catchphrase) {
         super (name, age, location);
         this.speciality = speciality;
@@ -26,7 +26,7 @@ class Instructors extends Person {
     }
 }
 
-class Students extends Person {
+class Student extends Person {
     constructor (name, age, location, previousBackground, className, favSubjects) {
         super (name, age, location);
         this.previousBackground = previousBackground;
@@ -44,9 +44,9 @@ class Students extends Person {
     }
 }
 
-class ProjectManagers extends Instructors {
-    constructor (name, age, location, gradClassName, favInstructor) {
-        super (name, age, location);
+class ProjectManager extends Instructor {
+    constructor (name, age, location, speciality, favLanguage, catchphrase, gradClassName, favInstructor) {
+        super (name, age, location, speciality, favLanguage, catchphrase);
         this.gradClassName = gradClassName;
         this.favInstructor = favInstructor;
     }
@@ -58,4 +58,9 @@ class ProjectManagers extends Instructors {
     }
 }
 
-let James = new student ('James', 40, 'Aberdeen', 'Oil and Gas', 'WEBEU3', 'test');
+let james = new Student ('James', 40, 'Aberdeen', 'Oil and Gas', 'WEBEU3', ['maths', 'physics', 'JS']);
+let isaac = new Instructor ('Isaac', 55, 'Ireland', 'cooking', 'JS!', 'one, two, TREE');
+let isaacsBoss = new ProjectManager ('Tony', 16, 'London', 'dancing', 'French', 'Whoop whoop', 'WEBEU3', 'Isaac');
+
+console.log(james.speak());
+console.log(james.favSubjects);
